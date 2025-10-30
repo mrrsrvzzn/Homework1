@@ -17,22 +17,16 @@ apt-get install ros-humble-urdf-tutorial -y
 ```
 If you're not using ros2 as a docker image, simply install those packages. Eventually replace the humble voice with your ros2 version.
 
-To check the visualization of the Armando robot in rviz, execute the following command:
+To check the visualization of the Armando robot in Rviz and Gazebo, execute the following command:
 ``` bash
-ros2 launch armando_description armando_display.launch,py
+ros2 launch armando_gazebo armando_world.launch.py
 ```
-By doing so, you should also see the images from the camera placed on the base_link of Armando, which displays a bottom-up point of view of the robot.
+By doing so, in Rviz, you should also see the images from the camera placed on the base_link of Armando, which displays a bottom-up point of view of the robot.
 You could also check the image of the camera by executing the following line from another terminal:
 ``` bash
 rqt run rqt_image_view rqt_image_view
 ```
 Through Rviz, you can also check the robot's collision meshes by ticking the corresponding item in the left sidebar and see how they differ from the visual meshes.
-
-To launch the simulation in Gazebo, instead of the previous one, use the following:
-``` bash
-ros2 launch armando_gazebo armando_world.launch.py
-```
-This will start both Gazebo and Rviz simultaneously.
 
 To control the Armando robot in a desired configuration of the joints, open another terminal and paste the following command:
 ``` bash
@@ -51,4 +45,3 @@ ros2 run armando_controller arm_controller_node --ros-args -p controller_type:=t
 if you want to control the trajectory.
 
 These controllers will move the robot's joints to a predefined position, characterised by the following vector of the positions of Armando's individual movable joints: [0.9, -0.6, 0.3, 0.1], defined in the arm_controller_node. 
-
